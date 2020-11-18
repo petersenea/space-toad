@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Code.Menus
 {
@@ -10,11 +11,23 @@ namespace Assets.Code.Menus
         private StartMenu _start;
         private PauseMenu _pause;
         private InstructionsMenu _instructions;
+        private readonly Text _keyText;
 
         public bool InMainMenu { get { return _start != null && _start.Showing; } }
 
         public UIManager () {
             Canvas = GameObject.Find("Canvas").transform; // There should only ever be one canvas
+            _keyText = GameObject.Find("ReferenceKey").GetComponent<Text>();
+        }
+
+        private void ShowReferenceKey()
+        {
+            _keyText.text = "'i': Instructions\n'p': Pause Game\n'Esc': Restart Game";
+        }
+
+        private void HideReferenceKey()
+        {
+            _keyText.text = "";
         }
 
         public void ShowStartMenu () {
@@ -27,29 +40,50 @@ namespace Assets.Code.Menus
             {
                 _start.Hide();
                 _start = null;
+                this.ShowReferenceKey();
             }
         }
 
         public void Pause () {
-            _pause = new PauseMenu();
-            _pause.Show();
+            if (_start == null && _instructions == null)
+            {
+                _pause = new PauseMenu();
+                _pause.Show();
+                this.HideReferenceKey();
+            }
+            
         }
 
         public void Unpause () {
-            _pause.Hide();
-            _pause = null;
+            if (_start == null && _instructions == null && _pause != null)
+            {
+                _pause.Hide();
+                _pause = null;
+                this.ShowReferenceKey();
+            }
+            
         }
 
         public void ShowInstructionsMenu()
         {
-            _instructions = new InstructionsMenu();
-            _instructions.Show();
+            if (_start == null && _pause == null)
+            {
+                _instructions = new InstructionsMenu();
+                _instructions.Show();
+                this.HideReferenceKey();
+            }
+            
         }
 
         public void HideInstructionsMenu()
         {
-            _instructions.Hide();
-            _instructions = null;
+            if (_start == null && _pause == null && _instructions != null)
+            {
+                _instructions.Hide();
+                _instructions = null;
+                this.ShowReferenceKey();
+            }
+
         }
 
         public void GameStart () { HideStartMenu(); }

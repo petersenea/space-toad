@@ -41,7 +41,26 @@ namespace Assets.Code
             {
                 UI.HideStartMenu();
             }
-		}
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                UI.Pause();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                UI.Unpause();
+            }
+
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                UI.ShowInstructionsMenu();
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                UI.HideInstructionsMenu();
+            }
+        }
 
         #region MenuFunctions
 
