@@ -23,8 +23,11 @@ namespace Assets.Code.Menus
         }
 
         public void HideStartMenu () {
-            _start.Hide();
-            _start = null;
+            if (_start != null)
+            {
+                _start.Hide();
+                _start = null;
+            }
         }
 
         public void Pause () {

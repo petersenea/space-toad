@@ -35,6 +35,14 @@ namespace Assets.Code
             UI.ShowStartMenu();
         }
 
+		private void Update() 
+		{
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                UI.HideStartMenu();
+            }
+		}
+
         #region MenuFunctions
 
         /// <summary>
