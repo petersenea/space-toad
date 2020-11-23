@@ -123,12 +123,14 @@ namespace Assets.Code
         private void PauseGameElements()
         {
             // put code here
+            Time.timeScale = 0;
             Debug.Log("pausing game elements...");
         }
 
         private void UnpauseGameElements()
         {
             // put code here
+            Time.timeScale = 1;
             Debug.Log("unpausing game elements...");
         }
 
