@@ -41,7 +41,7 @@ namespace Assets.Code.SpaceToad
                 _rb.position += new Vector2 (1f, 0f) * 0.005f;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd)
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_jumping)
             {
                 SpawnRocket();
                 
@@ -80,7 +80,7 @@ namespace Assets.Code.SpaceToad
 
                 if (_sr.color == Color.yellow)
                 {
-                    _sr.color = Color.green;
+                    _sr.color = Color.white;
                     
                 }
                 else
@@ -90,20 +90,11 @@ namespace Assets.Code.SpaceToad
 
                 }
             }
-            
-        }
-        internal void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.tag == "MoonFloor")
-            {
-                _jumping = false;
-            }
-
             else if (collision.gameObject.tag == "LaserBullet")
             {
                 if (_sr.color == Color.yellow)
                 {
-                    _sr.color = Color.green;
+                    _sr.color = Color.white;
 
                 }
                 else
@@ -113,6 +104,16 @@ namespace Assets.Code.SpaceToad
                 }
                 Destroy(collision.gameObject);
             }
+
+        }
+        internal void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.tag == "MoonFloor")
+            {
+                _jumping = false;
+            }
+
+           
 
         }
 
