@@ -79,10 +79,12 @@ namespace Assets.Code
 
             if (Input.GetKeyDown(KeyCode.I))
             {
+                PauseGameElements();
                 UI.ShowInstructionsMenu();
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
+                UnpauseGameElements();
                 UI.HideInstructionsMenu();
             }
         }
