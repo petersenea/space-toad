@@ -27,11 +27,10 @@ namespace Assets.Code.SpaceToad
 
         private void CheckKeys()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd)
             {
                 if (!_jumping)
                 {
-                    Debug.Log("jumping");
                     _rb.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
                 }
                 _jumping = true;
@@ -41,6 +40,24 @@ namespace Assets.Code.SpaceToad
             {
                 _rb.position += new Vector2 (1f, 0f) * 0.005f;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd)
+            {
+                SpawnRocket();
+                
+            }
+
+            if (_gameEnd)
+            {
+                Game.Ctx.PauseGameElements();
+            }
+        }
+
+        internal void SpawnRocket()
+        {
+            var rocket = (GameObject)Instantiate(Resources.Load("GameElements/RocketBullet"));
+            float width = GetComponent<SpriteRenderer>().size.x;
+            rocket.transform.SetPositionAndRotation(new Vector3(transform.position.x + width, transform.position.y, transform.position.z), rocket.transform.rotation);
         }
 
         internal void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +71,8 @@ namespace Assets.Code.SpaceToad
 
             else if (collision.gameObject.tag == "SpaceShip")
             {
-                Debug.Log("you win");
+                Game.Ctx.PauseGameElements();
+                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 Destroy(gameObject);
             }
             else if (collision.gameObject.tag == "AlienFrog")
@@ -67,12 +85,12 @@ namespace Assets.Code.SpaceToad
                 }
                 else
                 {
-                    Debug.Log("you lose");
                     _sr.color = Color.red;
                     _gameEnd = true;
 
                 }
             }
+            
         }
         internal void OnCollisionEnter2D(Collision2D collision)
         {
@@ -81,7 +99,20 @@ namespace Assets.Code.SpaceToad
                 _jumping = false;
             }
 
-            
+            else if (collision.gameObject.tag == "LaserBullet")
+            {
+                if (_sr.color == Color.yellow)
+                {
+                    _sr.color = Color.green;
+
+                }
+                else
+                {
+                    _sr.color = Color.red;
+                    _gameEnd = true;
+                }
+                Destroy(collision.gameObject);
+            }
 
         }
 
