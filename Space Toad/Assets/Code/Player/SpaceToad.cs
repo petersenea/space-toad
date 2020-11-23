@@ -80,7 +80,7 @@ namespace Assets.Code.SpaceToad
 
                 if (_sr.color == Color.yellow)
                 {
-                    _sr.color = Color.green;
+                    _sr.color = Color.white;
                     
                 }
                 else
@@ -103,7 +103,7 @@ namespace Assets.Code.SpaceToad
             {
                 if (_sr.color == Color.yellow)
                 {
-                    _sr.color = Color.green;
+                    _sr.color = Color.white;
 
                 }
                 else
