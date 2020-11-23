@@ -45,7 +45,7 @@ namespace Assets.Code.Menus
         }
 
         public void Pause () {
-            if (_start == null && _instructions == null)
+            if (_start == null && _instructions == null && _pause == null)
             {
                 _pause = new PauseMenu();
                 _pause.Show();

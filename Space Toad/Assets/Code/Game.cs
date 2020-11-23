@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using Assets.Code.Menus;
+using System.Collections;
 
 namespace Assets.Code
 {
@@ -22,7 +23,9 @@ namespace Assets.Code
         //public PlatformManager Platforms { get; private set; }
         //public ScoreManager Score { get; private set; }
 
-        //private Player.Player _player;
+        private SpaceToad.SpaceToad _player;
+        private bool _started;
+        private float Timer = 0f;
 
         internal void Start () {
             Ctx = this;
@@ -33,31 +36,55 @@ namespace Assets.Code
             //Score = new ScoreManager();
 
             UI.ShowStartMenu();
+            _started = false;
         }
 
-		private void Update() 
-		{
-            if (Input.GetKeyDown(KeyCode.S))
+        private void Update()
+        {
+
+            if (Input.GetKeyDown(KeyCode.S) && !_started)
             {
+                StartGame();
+                
                 UI.HideStartMenu();
+                _started = true;
+            }
+
+            if (_started)
+            {
+                Timer += Time.deltaTime;
+            }
+
+            if (Timer >= 3f)
+            {
+                SpawnAlien();
+                Timer = 0f;
             }
 
             if (Input.GetKeyDown(KeyCode.P))
             {
+                // code for pausing components here
+                PauseGameElements();
+                // code for showing pause menu here
                 UI.Pause();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
+                // code for unpausing components here
+                UnpauseGameElements();
+                // code for hiding pause menu here
                 UI.Unpause();
             }
 
             if (Input.GetKeyDown(KeyCode.I))
             {
+                PauseGameElements();
                 UI.ShowInstructionsMenu();
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
+                UnpauseGameElements();
                 UI.HideInstructionsMenu();
             }
         }
@@ -68,31 +95,54 @@ namespace Assets.Code
         /// Start a new game
         /// </summary>
         public void StartGame () {
-            //SpawnGameElements();
+            SpawnGameElements();
 
             UI.GameStart();
-            //Clock.GameStart();
-            //Platforms.GameStart();
-            //Score.GameStart();
 
             Debug.Log("start");
 
         }
 
-        /*
-         private void SpawnGameElements () {
-            var playerprefab = Resources.Load("Player");
-            var player = (GameObject)Instantiate(playerprefab);
-            _player = player.GetComponent<Player.Player>();
-            Camera.main.transform.SetParent(_player.transform);
+
+        private void SpawnGameElements() {
+            var player = (GameObject) Instantiate(Resources.Load("GameElements/SpaceToad"));
+            _player = player.GetComponent<SpaceToad.SpaceToad>();
+
+            var moonfloor = (GameObject) Instantiate(Resources.Load("GameElements/MoonFloor"));
+            var spaceship = (GameObject) Instantiate(Resources.Load("GameElements/SpaceShip"));
+            var moonfly = (GameObject) Instantiate(Resources.Load("GameElements/MoonFly"));
+
+            SpawnAlien(); // one Alien to start
+            
         }
-        */
+
+        private void SpawnAlien()
+        {
+            var alienfrog = (GameObject)Instantiate(Resources.Load("GameElements/AlienFrog"));
+
+        }
+
+        private void PauseGameElements()
+        {
+            // put code here
+            Time.timeScale = 0;
+            Debug.Log("pausing game elements...");
+        }
+
+        private void UnpauseGameElements()
+        {
+            // put code here
+            Time.timeScale = 1;
+            Debug.Log("unpausing game elements...");
+        }
+
+        
 
         /// <summary>
         /// Leave the game and return to the main menu
         /// </summary>
         public void ReturnToMenu () {
-            //CleanUpGameElements();
+            CleanUpGameElements();
 
             UI.GameEnd();
             //Clock.GameEnd();
@@ -100,15 +150,13 @@ namespace Assets.Code
             //Score.GameEnd();
         }
 
-        /*
+        
         private void CleanUpGameElements () {
-            Camera.main.transform.SetParent(null);
-            Camera.main.transform.position = Vector3.back;
 
             Destroy(_player.gameObject);
             _player = null;
         }
-        */
+        
 
         /// <summary>
         /// Quits the game if in editor, otherwise closes the application
