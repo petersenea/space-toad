@@ -8,7 +8,7 @@ namespace Assets.Code.SpaceToad
     {
 
         private bool _jumping;
-        private float _jumpForce = 5f;
+        private float _jumpForce = 10f;
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private bool _gameEnd;
@@ -38,7 +38,8 @@ namespace Assets.Code.SpaceToad
 
             if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd)
             {
-                _rb.position += new Vector2 (1f, 0f) * 0.005f;
+                //_rb.position += new Vector2 (1f, 0f) * 0.005f;
+				transform.position += Vector3.right * 0.005f;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_jumping)
@@ -57,7 +58,8 @@ namespace Assets.Code.SpaceToad
         {
             var rocket = (GameObject)Instantiate(Resources.Load("GameElements/RocketBullet"));
             float width = GetComponent<SpriteRenderer>().size.x;
-            rocket.transform.SetPositionAndRotation(new Vector3(transform.position.x + width, transform.position.y, transform.position.z), rocket.transform.rotation);
+			rocket.transform.position = new Vector3(transform.position.x + width, transform.position.y-0.2f, transform.position.z);
+            //rocket.transform.SetPositionAndRotation(new Vector3(transform.position.x + width, transform.position.y-1f, transform.position.z), rocket.transform.rotation);
         }
 
         internal void OnTriggerEnter2D(Collider2D collision)
