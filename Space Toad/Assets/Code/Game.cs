@@ -19,9 +19,6 @@ namespace Assets.Code
         public static Game Ctx;
 
         public UIManager UI { get; private set; }
-        //public TimeManager Clock { get; private set; }
-        //public PlatformManager Platforms { get; private set; }
-        //public ScoreManager Score { get; private set; }
 
         private SpaceToad.SpaceToad _player;
         private bool _started;
@@ -31,9 +28,6 @@ namespace Assets.Code
             Ctx = this;
 
             UI = new UIManager();
-            //Clock = new TimeManager();
-            //Platforms = new PlatformManager();
-            //Score = new ScoreManager();
 
             UI.ShowStartMenu();
             _started = false;
@@ -47,7 +41,7 @@ namespace Assets.Code
                 StartGame();
                 
                 UI.HideStartMenu();
-                _started = true;
+                
             }
 
             if (_started)
@@ -55,7 +49,7 @@ namespace Assets.Code
                 Timer += Time.deltaTime;
             }
 
-            if (Timer >= 3f)
+            if (Timer >= 6f && _started)
             {
                 SpawnAlien();
                 Timer = 0f;
@@ -87,6 +81,8 @@ namespace Assets.Code
                 UnpauseGameElements();
                 UI.HideInstructionsMenu();
             }
+
+
         }
 
         #region MenuFunctions
@@ -98,8 +94,6 @@ namespace Assets.Code
             SpawnGameElements();
 
             UI.GameStart();
-
-            Debug.Log("start");
 
         }
 
@@ -113,7 +107,9 @@ namespace Assets.Code
             var moonfly = (GameObject) Instantiate(Resources.Load("GameElements/MoonFly"));
 
             SpawnAlien(); // one Alien to start
-            
+
+            _started = true;
+
         }
 
         private void SpawnAlien()
@@ -122,18 +118,20 @@ namespace Assets.Code
 
         }
 
-        private void PauseGameElements()
+        public void PauseGameElements()
         {
             // put code here
             Time.timeScale = 0;
-            Debug.Log("pausing game elements...");
+            //Debug.Log("pausing game elements...");
+            _started = false;
         }
 
-        private void UnpauseGameElements()
+        public void UnpauseGameElements()
         {
             // put code here
             Time.timeScale = 1;
-            Debug.Log("unpausing game elements...");
+            //Debug.Log("unpausing game elements...");
+            _started = true;
         }
 
         
