@@ -2,6 +2,7 @@
 using UnityEngine;
 using Assets.Code.Menus;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Code
 {
@@ -33,6 +34,11 @@ namespace Assets.Code
             _started = false;
         }
 
+        private void RestartLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         private void Update()
         {
 
@@ -47,27 +53,28 @@ namespace Assets.Code
             if (_started)
             {
                 Timer += Time.deltaTime;
-            }
 
-            if (Timer >= 6f && _started)
-            {
-                SpawnAlien();
-                Timer = 0f;
+                if (Timer >= 6f)
+                {
+                    SpawnAlien();
+                    Timer = 0f;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    RestartLevel();
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                // code for pausing components here
                 PauseGameElements();
-                // code for showing pause menu here
                 UI.Pause();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                // code for unpausing components here
                 UnpauseGameElements();
-                // code for hiding pause menu here
                 UI.Unpause();
             }
 
