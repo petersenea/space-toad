@@ -72,12 +72,14 @@ namespace Assets.Code
                     SpawnFly();
                     FlyTimer = 0f;
                 }
-
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     RestartLevel();
                 }
+
             }
+
+            
 
             if (Input.GetKeyDown(KeyCode.P))
             {
