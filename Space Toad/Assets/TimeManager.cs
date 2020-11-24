@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 namespace Assets.Code.SpaceToadns
 {
@@ -39,7 +38,7 @@ namespace Assets.Code.SpaceToadns
             {
                 if (CurrentTime >= 0f)
                 {
-                    _timeText.text = string.Format("{0}\n{1}", "Survive", System.Math.Round(CurrentTime, 2))
+                    _timeText.text = string.Format("{0}\n{1}", "Survive", Mathf.Round(CurrentTime))
                         .PadLeft(4, '0');
                 }
                 else
