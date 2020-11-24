@@ -16,7 +16,7 @@ namespace Assets.Code.LaserBullet
         internal void Update()
         {
             
-            transform.Translate(Vector3.up * Time.deltaTime * 2f);
+            transform.Translate(Vector3.right * Time.deltaTime * -2f);
         }
     }
 }

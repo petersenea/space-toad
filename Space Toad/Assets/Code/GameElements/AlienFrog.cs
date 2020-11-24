@@ -34,9 +34,10 @@ namespace Assets.Code.AlienFrog
         {
             var rocket = (GameObject) Instantiate(Resources.Load("GameElements/LaserBullet"));
             float width = GetComponent<SpriteRenderer>().size.x;
-            rocket.transform.SetPositionAndRotation(
-                new Vector3(transform.position.x - width, transform.position.y, transform.position.z),
-                rocket.transform.rotation);
+            rocket.transform.position = new Vector3(transform.position.x - width, transform.position.y-0.1f, transform.position.z);
+            //rocket.transform.SetPositionAndRotation(
+              //  new Vector3(transform.position.x - width, transform.position.y, transform.position.z),
+                //rocket.transform.rotation);
             Destroy(rocket, 10);
         }
 
