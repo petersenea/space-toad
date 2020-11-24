@@ -16,7 +16,7 @@ namespace Assets.Code.SpaceToadns
         private bool fired = false;
         private float timeToFire = 0f;
         private bool canEscape = false;
-        private float timeToEscape = 0f;
+        public float timeToEscape = 60.0f;
 
         internal void Start()
         {
@@ -41,10 +41,10 @@ namespace Assets.Code.SpaceToadns
 
             if (!canEscape)
             {
-                timeToEscape += Time.deltaTime;
+                timeToEscape -= Time.deltaTime;
             }
 
-            if (timeToEscape >= 60f)
+            if (timeToEscape <= 0)
             {
                 canEscape = true;
             }

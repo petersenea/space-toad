@@ -139,7 +139,6 @@ namespace Assets.Code
         {
             GameObject alienfrog = (GameObject)Instantiate(Resources.Load("GameElements/AlienFrog"));
             float side = Random.Range(0, 2);
-            Debug.Log(side);
             if (side == 0)
             {
                 alienfrog.transform.position =
