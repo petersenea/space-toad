@@ -37,6 +37,7 @@ namespace Assets.Code.AlienFrog
             rocket.transform.SetPositionAndRotation(
                 new Vector3(transform.position.x - width, transform.position.y, transform.position.z),
                 rocket.transform.rotation);
+            Destroy(rocket, 10);
         }
 
         internal void OnTriggerEnter2D(Collider2D collision)

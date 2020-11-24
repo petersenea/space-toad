@@ -21,7 +21,7 @@ namespace Assets.Code
 
         public UIManager UI { get; private set; }
 
-        private SpaceToad.SpaceToad _player;
+        private SpaceToadns.SpaceToad _player;
         private bool _started;
         private float Timer = 0f;
 
@@ -112,7 +112,7 @@ namespace Assets.Code
 
         private void SpawnGameElements() {
             var player = (GameObject) Instantiate(Resources.Load("GameElements/SpaceToad"));
-            _player = player.GetComponent<SpaceToad.SpaceToad>();
+            _player = player.GetComponent<SpaceToadns.SpaceToad>();
 
             var moonfloor = (GameObject) Instantiate(Resources.Load("GameElements/MoonFloor"));
             var spaceship = (GameObject) Instantiate(Resources.Load("GameElements/SpaceShip"));

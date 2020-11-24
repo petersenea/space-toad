@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Assets.Code.SpaceToad
+namespace Assets.Code.SpaceToadns
 {
 
     public class SpaceToad : MonoBehaviour
@@ -12,6 +12,7 @@ namespace Assets.Code.SpaceToad
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private bool _gameEnd;
+        public bool facingRight = true;
 
         internal void Start()
         {
@@ -38,14 +39,26 @@ namespace Assets.Code.SpaceToad
 
             if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd)
             {
-                //_rb.position += new Vector2 (1f, 0f) * 0.005f;
-				transform.position += Vector3.right * 0.1f;
+                if (!facingRight) 
+                {
+                    FlipToad();
+                }
+                _rb.position += new Vector2 (1f, 0f) * 0.1f;
+				//transform.position += Vector3.right * 0.1f;
             }
 
             if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd)
             {
-                //_rb.position += new Vector2 (1f, 0f) * 0.005f;
-				transform.position += Vector3.right * -0.1f;
+                if (facingRight) 
+                {
+                    FlipToad();
+                }
+                
+                if (transform.position.x >= -10f) 
+                {
+                    _rb.position += new Vector2 (1f, 0f) * -0.1f;
+				    //transform.position += Vector3.right * -0.1f;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_jumping)
@@ -60,11 +73,26 @@ namespace Assets.Code.SpaceToad
             }
         }
 
+        private void FlipToad() 
+        {
+            facingRight = !facingRight;
+            Vector2 localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
+        }
+
         internal void SpawnRocket()
         {
             var rocket = (GameObject)Instantiate(Resources.Load("GameElements/RocketBullet"));
+            float dir = 1f;
             float width = GetComponent<SpriteRenderer>().size.x;
-			rocket.transform.position = new Vector3(transform.position.x + width, transform.position.y-0.2f, transform.position.z);
+            if (!facingRight) 
+            {
+                rocket.GetComponent<RocketBullet>().FlipRocket();
+                dir *= -1f;
+            }
+			rocket.transform.position = new Vector3(transform.position.x + (dir * width), transform.position.y-0.2f, transform.position.z);
+            Destroy(rocket, 3);
             //rocket.transform.SetPositionAndRotation(new Vector3(transform.position.x + width, transform.position.y-1f, transform.position.z), rocket.transform.rotation);
         }
 
