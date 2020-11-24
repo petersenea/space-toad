@@ -11,6 +11,8 @@ TagManager:
   - LaserBullet
   - AlienFrog
   - MoonFly
+  - Game
+  - GameControl
   layers:
   - Default
   - TransparentFX

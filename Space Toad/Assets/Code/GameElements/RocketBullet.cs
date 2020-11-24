@@ -13,7 +13,7 @@ namespace Assets.Code.RocketBullet
 
         internal void Update()
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 2f);
+            transform.Translate(Vector3.right * Time.deltaTime * 20f);
         }
     }
 }

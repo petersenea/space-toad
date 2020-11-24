@@ -34,6 +34,11 @@ namespace Assets.Code
             _started = false;
         }
 
+        public bool CheckStart()
+        {
+            return _started;
+        }
+        
         private void RestartLevel()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

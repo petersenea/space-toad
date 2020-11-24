@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameElements/RocketBullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameElements/RocketBullet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player/SpaceToad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/SpaceToad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Main.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,16 +37,20 @@
     <setting file="file://$PROJECT_DIR$/Menus/PauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GameElements/RocketBullet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Menus/UIManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/LaserBullet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/SpaceToad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Game.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../CameraSystem.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Game.cs" />
         <option value="$PROJECT_DIR$/Menus/UIManager.cs" />
         <option value="$PROJECT_DIR$/GameElements/RocketBullet.cs" />
+        <option value="$PROJECT_DIR$/../CameraControl.cs" />
         <option value="$PROJECT_DIR$/Player/SpaceToad.cs" />
+        <option value="$PROJECT_DIR$/Game.cs" />
+        <option value="$PROJECT_DIR$/../CameraSystem.cs" />
       </list>
     </option>
   </component>
@@ -52,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606088225471</updated>
       <workItem from="1606088237126" duration="972000" />
-      <workItem from="1606171831908" duration="1591000" />
+      <workItem from="1606171831908" duration="6788000" />
     </task>
     <servers />
   </component>
@@ -61,6 +84,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

@@ -39,7 +39,13 @@ namespace Assets.Code.SpaceToad
             if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd)
             {
                 //_rb.position += new Vector2 (1f, 0f) * 0.005f;
-				transform.position += Vector3.right * 0.005f;
+				transform.position += Vector3.right * 0.1f;
+            }
+
+            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd)
+            {
+                //_rb.position += new Vector2 (1f, 0f) * 0.005f;
+				transform.position += Vector3.right * -0.1f;
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_jumping)
