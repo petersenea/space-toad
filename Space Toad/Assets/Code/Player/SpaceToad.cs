@@ -61,7 +61,7 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_jumping)
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd)
             {
                 SpawnRocket();
                 

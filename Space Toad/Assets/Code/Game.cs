@@ -114,6 +114,7 @@ namespace Assets.Code
             var player = (GameObject) Instantiate(Resources.Load("GameElements/SpaceToad"));
             _player = player.GetComponent<SpaceToadns.SpaceToad>();
 
+            var nightsky = (GameObject) Instantiate(Resources.Load("GameElements/NightSky"));
             var moonfloor = (GameObject) Instantiate(Resources.Load("GameElements/MoonFloor"));
             var spaceship = (GameObject) Instantiate(Resources.Load("GameElements/SpaceShip"));
             var moonfly = (GameObject) Instantiate(Resources.Load("GameElements/MoonFly"));

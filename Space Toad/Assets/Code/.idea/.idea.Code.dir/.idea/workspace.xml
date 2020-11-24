@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Credits.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Credits.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameElements/AlienFrog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GameElements/AlienFrog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player/SpaceToad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/SpaceToad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/GameElements/MoonFloor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GameElements/MoonFloor.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +51,12 @@
         <option value="$PROJECT_DIR$/../CameraControl.cs" />
         <option value="$PROJECT_DIR$/../CameraSystem.cs" />
         <option value="$PROJECT_DIR$/GameElements/RocketBullet.cs" />
-        <option value="$PROJECT_DIR$/Game.cs" />
-        <option value="$PROJECT_DIR$/Player/SpaceToad.cs" />
         <option value="$PROJECT_DIR$/../MoonFly.cs" />
         <option value="$PROJECT_DIR$/MoonFly.cs" />
+        <option value="$PROJECT_DIR$/GameElements/LaserBullet.cs" />
         <option value="$PROJECT_DIR$/GameElements/AlienFrog.cs" />
+        <option value="$PROJECT_DIR$/Game.cs" />
+        <option value="$PROJECT_DIR$/Player/SpaceToad.cs" />
       </list>
     </option>
   </component>
@@ -76,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606088225471</updated>
       <workItem from="1606088237126" duration="972000" />
-      <workItem from="1606171831908" duration="12499000" />
+      <workItem from="1606171831908" duration="13161000" />
     </task>
     <servers />
   </component>

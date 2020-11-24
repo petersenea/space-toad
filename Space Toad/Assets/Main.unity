@@ -375,9 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2932269e4bcd149139c6cecacce72407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 0}
   xmin: -2
-  xmax: 2
+  xmax: 19
 --- !u!1001 &1737956549
 PrefabInstance:
   m_ObjectHideFlags: 0
