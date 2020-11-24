@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-namespace Assets.Code.LaserBullet
+namespace Assets.Code
 {
 
     public class LaserBullet : MonoBehaviour
     {
 
-
+        public float dir = 1f;
         internal void Start()
         {
             
@@ -16,7 +16,12 @@ namespace Assets.Code.LaserBullet
         internal void Update()
         {
             
-            transform.Translate(Vector3.right * Time.deltaTime * -2f);
+            transform.Translate(Vector3.left * Time.deltaTime * 2.5f * dir);
+        }
+
+        public void FlipLaser()
+        {
+            dir *= -1f;
         }
     }
 }

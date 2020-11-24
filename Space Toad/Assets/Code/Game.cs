@@ -24,6 +24,7 @@ namespace Assets.Code
         private SpaceToadns.SpaceToad _player;
         private bool _started;
         private float Timer = 0f;
+        private float FlyTimer = 0f;
 
         internal void Start () {
             Ctx = this;
@@ -58,11 +59,18 @@ namespace Assets.Code
             if (_started)
             {
                 Timer += Time.deltaTime;
+                FlyTimer += Time.deltaTime;
 
-                if (Timer >= 6f)
+                if (Timer >= 2.5f)
                 {
                     SpawnAlien();
                     Timer = 0f;
+                }
+                
+                if (FlyTimer >= 10f)
+                {
+                    SpawnFly();
+                    FlyTimer = 0f;
                 }
 
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -117,9 +125,9 @@ namespace Assets.Code
             var nightsky = (GameObject) Instantiate(Resources.Load("GameElements/NightSky"));
             var moonfloor = (GameObject) Instantiate(Resources.Load("GameElements/MoonFloor"));
             var spaceship = (GameObject) Instantiate(Resources.Load("GameElements/SpaceShip"));
-            var moonfly = (GameObject) Instantiate(Resources.Load("GameElements/MoonFly"));
 
             SpawnAlien(); // one Alien to start
+            SpawnFly(); // one Fly to start
 
             _started = true;
 
@@ -127,8 +135,24 @@ namespace Assets.Code
 
         private void SpawnAlien()
         {
-            var alienfrog = (GameObject)Instantiate(Resources.Load("GameElements/AlienFrog"));
-
+            GameObject alienfrog = (GameObject)Instantiate(Resources.Load("GameElements/AlienFrog"));
+            float side = Random.Range(0, 2);
+            Debug.Log(side);
+            if (side == 0)
+            {
+                alienfrog.transform.position =
+                    new Vector3(31f, alienfrog.transform.position.y, alienfrog.transform.position.z);
+            }
+            else
+            {
+                alienfrog.transform.position =
+                    new Vector3(-14f, alienfrog.transform.position.y, alienfrog.transform.position.z);
+            }
+        }
+        
+        private void SpawnFly()
+        {
+            var moonfly = (GameObject) Instantiate(Resources.Load("GameElements/MoonFly"));
         }
 
         public void PauseGameElements()

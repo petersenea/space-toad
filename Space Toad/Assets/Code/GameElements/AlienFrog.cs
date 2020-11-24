@@ -8,11 +8,14 @@ namespace Assets.Code.AlienFrog
     {
         private bool _didWin;
         private float Timer = 0f;
+        public bool facingRight = false;
+        private GameObject toad;
 
 
         internal void Start()
         {
             _didWin = false;
+            toad = GameObject.FindGameObjectWithTag("SpaceToad");
         }
 
         internal void Update()
@@ -20,25 +23,57 @@ namespace Assets.Code.AlienFrog
             if (!_didWin)
             {
                 Timer += Time.deltaTime;
-                if (Timer >= 5f)
+                if (Timer >= 6f)
                 {
                     SpawnLaser();
                     Timer = 0f;
                 }
 
-                transform.Translate(Vector3.left * Time.deltaTime);
+                if ((toad.transform.position.x < transform.position.x) && facingRight)
+                {
+                    FlipFrog();
+                }
+                else if ((toad.transform.position.x >= transform.position.x) && !facingRight)
+                {
+                    FlipFrog();
+                }
+
+                float dir;
+                if (facingRight)
+                {
+                    dir = -1f;
+                }
+                else
+                {
+                    dir = 1f;
+                }
+                transform.Translate(Vector3.left * Time.deltaTime * dir * 2f);
             }
+        }
+        
+        private void FlipFrog() 
+        {
+            facingRight = !facingRight;
+            Vector2 localScale = transform.localScale;
+            localScale.x *= -1;
+            transform.localScale = localScale;
         }
 
         internal void SpawnLaser()
         {
             var rocket = (GameObject) Instantiate(Resources.Load("GameElements/LaserBullet"));
+            float dir = 1f;
             float width = GetComponent<SpriteRenderer>().size.x;
-            rocket.transform.position = new Vector3(transform.position.x - width, transform.position.y-0.1f, transform.position.z);
+            if (facingRight) 
+            {
+                rocket.GetComponent<LaserBullet>().FlipLaser();
+                dir *= -1f;
+            }
+            rocket.transform.position = new Vector3(transform.position.x - (dir * width), transform.position.y-0.1f, transform.position.z);
             //rocket.transform.SetPositionAndRotation(
               //  new Vector3(transform.position.x - width, transform.position.y, transform.position.z),
                 //rocket.transform.rotation);
-            Destroy(rocket, 10);
+            Destroy(rocket, 20);
         }
 
         internal void OnTriggerEnter2D(Collider2D collision)

@@ -13,6 +13,10 @@ namespace Assets.Code.SpaceToadns
         private SpriteRenderer _sr;
         private bool _gameEnd;
         public bool facingRight = true;
+        private bool fired = false;
+        private float timeToFire = 0f;
+        private bool canEscape = false;
+        private float timeToEscape = 0f;
 
         internal void Start()
         {
@@ -24,6 +28,26 @@ namespace Assets.Code.SpaceToadns
         internal void Update()
         {
             CheckKeys();
+            if (fired)
+            {
+                timeToFire += Time.deltaTime;
+            }
+
+            if (timeToFire >= 1.0f)
+            {
+                fired = false;
+                timeToFire = 0f;
+            }
+
+            if (!canEscape)
+            {
+                timeToEscape += Time.deltaTime;
+            }
+
+            if (timeToEscape >= 60f)
+            {
+                canEscape = true;
+            }
         }
 
         private void CheckKeys()
@@ -43,8 +67,12 @@ namespace Assets.Code.SpaceToadns
                 {
                     FlipToad();
                 }
-                _rb.position += new Vector2 (1f, 0f) * 0.1f;
-				//transform.position += Vector3.right * 0.1f;
+
+                if (transform.position.x <= 27f)
+                {
+                    _rb.position += new Vector2(1f, 0f) * 0.1f;
+                    //transform.position += Vector3.right * 0.1f;
+                }
             }
 
             if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd)
@@ -61,10 +89,10 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd)
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !fired)
             {
                 SpawnRocket();
-                
+                fired = true;
             }
 
             if (_gameEnd)
@@ -105,11 +133,12 @@ namespace Assets.Code.SpaceToadns
             }
             
 
-            else if (collision.gameObject.tag == "SpaceShip")
+            else if (collision.gameObject.tag == "SpaceShip" && canEscape)
             {
+                Destroy(gameObject, 0.1f);
                 Game.Ctx.PauseGameElements();
                 collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                Destroy(gameObject);
+                
             }
             else if (collision.gameObject.tag == "AlienFrog")
             {
