@@ -69,7 +69,7 @@ namespace Assets.Code.AlienFrog
                 rocket.GetComponent<LaserBullet>().FlipLaser();
                 dir *= -1f;
             }
-            rocket.transform.position = new Vector3(transform.position.x - (dir * width), transform.position.y-0.1f, transform.position.z);
+            rocket.transform.position = new Vector3(transform.position.x - (dir * width), transform.position.y-0.07f, transform.position.z);
             //rocket.transform.SetPositionAndRotation(
               //  new Vector3(transform.position.x - width, transform.position.y, transform.position.z),
                 //rocket.transform.rotation);
@@ -94,7 +94,7 @@ namespace Assets.Code.AlienFrog
             {
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
-                Debug.Log("hello");
+                //Debug.Log("hello");
             }
 
         }
