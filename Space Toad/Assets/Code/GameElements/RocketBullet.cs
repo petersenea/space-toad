@@ -7,6 +7,8 @@ namespace Assets.Code
     {
         
         public float dir = 1f;
+        
+
         internal void Start()
         {
             

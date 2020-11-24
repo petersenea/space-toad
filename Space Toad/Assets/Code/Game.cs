@@ -3,6 +3,7 @@ using UnityEngine;
 using Assets.Code.Menus;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Code
 {
@@ -32,6 +33,7 @@ namespace Assets.Code
             UI = new UIManager();
 
             UI.ShowStartMenu();
+            UnpauseGameElements();
             _started = false;
         }
 
@@ -72,14 +74,14 @@ namespace Assets.Code
                     SpawnFly();
                     FlyTimer = 0f;
                 }
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    RestartLevel();
-                }
+                
 
             }
 
-            
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                RestartLevel();
+            }
 
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -114,7 +116,7 @@ namespace Assets.Code
         /// </summary>
         public void StartGame () {
             SpawnGameElements();
-
+            GameObject.Find("Score").GetComponent<Text>().text = "0";
             UI.GameStart();
 
         }

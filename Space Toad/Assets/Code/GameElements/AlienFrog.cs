@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 namespace Assets.Code.AlienFrog
 {
@@ -10,12 +12,15 @@ namespace Assets.Code.AlienFrog
         private float Timer = 0f;
         public bool facingRight = false;
         private GameObject toad;
+        private Text _scoreText;
+        private int _score;
 
 
         internal void Start()
         {
             _didWin = false;
             toad = GameObject.FindGameObjectWithTag("SpaceToad");
+            
         }
 
         internal void Update()
@@ -92,6 +97,10 @@ namespace Assets.Code.AlienFrog
             }
             else if (collision.gameObject.tag == "RocketBullet")
             {
+                _scoreText = GameObject.Find("Score").GetComponent<Text>();
+                _score = Convert.ToInt32(_scoreText.text);
+                _score = _score + 1;
+                _scoreText.text = _score.ToString();
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
                 //Debug.Log("hello");

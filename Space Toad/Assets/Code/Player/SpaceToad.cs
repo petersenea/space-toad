@@ -17,12 +17,14 @@ namespace Assets.Code.SpaceToadns
         private float timeToFire = 0f;
         private bool canEscape = false;
         public float timeToEscape = 60.0f;
+       
 
         internal void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _gameEnd = false;
+           
         }
 
         internal void Update()
@@ -44,9 +46,10 @@ namespace Assets.Code.SpaceToadns
                 timeToEscape -= Time.deltaTime;
             }
 
-            if (timeToEscape <= 0)
+            if (timeToEscape <= 0 && !canEscape)
             {
                 canEscape = true;
+                GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().color = Color.green;
             }
         }
 
@@ -138,7 +141,8 @@ namespace Assets.Code.SpaceToadns
                 Destroy(gameObject, 0.1f);
                 Game.Ctx.PauseGameElements();
                 collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                
+                _gameEnd = true;
+
             }
             else if (collision.gameObject.tag == "AlienFrog")
             {
