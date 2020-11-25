@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Resources/GameElements/NightSky.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GameElements/NightSky.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameElements/.idea/.idea.GameElements.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/GameElements/.idea/.idea.GameElements.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Player/SpaceToad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/SpaceToad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/GameElements/SpaceShip.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GameElements/SpaceShip.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sprites/rpg.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprites/rpg.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +35,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Menus/PauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GameElements/RocketBullet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/RocketBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Menus/UIManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GameElements/LaserBullet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/LaserBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Player/SpaceToad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Game.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GameElements/AlienFrog.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/AlienFrog.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -77,6 +80,7 @@
       <updated>1606088225471</updated>
       <workItem from="1606088237126" duration="972000" />
       <workItem from="1606171831908" duration="13254000" />
+      <workItem from="1606342338962" duration="310000" />
     </task>
     <servers />
   </component>
@@ -95,6 +99,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

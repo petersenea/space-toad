@@ -145,3 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   timeToEscape: 60
+  safeShip: {fileID: 21300000, guid: a31cdc6bd70e842b0bc575ffb747c6f2, type: 3}
+  escapeShip: {fileID: 21300000, guid: 67e358789830e43b0886a03c0641391f, type: 3}

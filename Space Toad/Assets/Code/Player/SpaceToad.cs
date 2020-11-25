@@ -17,6 +17,8 @@ namespace Assets.Code.SpaceToadns
         private float timeToFire = 0f;
         private bool canEscape = false;
         public float timeToEscape = 60.0f;
+		public Sprite safeShip;
+		public Sprite escapeShip;
        
 
         internal void Start()
@@ -49,7 +51,7 @@ namespace Assets.Code.SpaceToadns
             if (timeToEscape <= 0 && !canEscape)
             {
                 canEscape = true;
-                GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().color = Color.green;
+                GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().sprite = escapeShip;
             }
         }
 
@@ -140,7 +142,8 @@ namespace Assets.Code.SpaceToadns
             {
                 Destroy(gameObject, 0.1f);
                 Game.Ctx.PauseGameElements();
-                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+				collision.gameObject.GetComponent<SpriteRenderer>().sprite = safeShip;
+                //collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 _gameEnd = true;
 
             }
