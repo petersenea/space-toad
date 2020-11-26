@@ -20,8 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Code.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player/SpaceToad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Player/SpaceToad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/GameElements/SpaceToad.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GameElements/SpaceToad.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../TimeManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +84,7 @@
       <workItem from="1606088237126" duration="972000" />
       <workItem from="1606171831908" duration="13254000" />
       <workItem from="1606342338962" duration="785000" />
-      <workItem from="1606428517862" duration="2488000" />
+      <workItem from="1606428517862" duration="2972000" />
     </task>
     <servers />
   </component>

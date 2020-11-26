@@ -17,7 +17,7 @@ namespace Assets.Code.SpaceToadns
         private bool fired = false;
         private float timeToFire = 0f;
         private bool canEscape = false;
-        public float timeToEscape = 10.0f;
+        public float timeToEscape = 60.0f;
 		public Sprite safeShip;
 		public Sprite escapeShip;
 		GameObject spaceship;

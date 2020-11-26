@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6315b273ad56d6f47a1630e03abed389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _endAnimation: 0
   facingRight: 1
-  timeToEscape: 10
+  timeToEscape: 60
   safeShip: {fileID: 21300000, guid: a31cdc6bd70e842b0bc575ffb747c6f2, type: 3}
   escapeShip: {fileID: 21300000, guid: 67e358789830e43b0886a03c0641391f, type: 3}

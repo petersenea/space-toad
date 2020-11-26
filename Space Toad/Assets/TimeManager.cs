@@ -9,7 +9,7 @@ namespace Assets.Code
     public class TimeManager : MonoBehaviour
     {
         public float CurrentTime { get; private set; }
-        public float timeToEscape = 10f;
+        public float timeToEscape = 60f;
         private static Text _timeText;
         private GameObject game;
         private GameObject toad;
