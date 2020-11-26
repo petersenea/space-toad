@@ -18,7 +18,7 @@ namespace Assets.Code
         private void Start()
         {
             _timeText = GetComponent<Text>();
-            CurrentTime = 10.0f;
+            CurrentTime = 60.0f;
             game = GameObject.FindWithTag("GameControl");
             toad = GameObject.FindGameObjectWithTag("SpaceToad");
             UpdateTime();
