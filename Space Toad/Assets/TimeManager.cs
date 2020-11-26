@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.SpaceToadns
+namespace Assets.Code
 {
 
     public class TimeManager : MonoBehaviour
     {
         public float CurrentTime { get; private set; }
-        public float timeToEscape = 60f;
+        public float timeToEscape = 10f;
         private static Text _timeText;
         private GameObject game;
+        private GameObject toad;
 
         // ReSharper disable once UnusedMember.Global
         private void Start()
         {
             _timeText = GetComponent<Text>();
-            CurrentTime = 60.0f;
+            CurrentTime = 10.0f;
             game = GameObject.FindWithTag("GameControl");
+            toad = GameObject.FindGameObjectWithTag("SpaceToad");
             UpdateTime();
         }
 
@@ -40,6 +42,10 @@ namespace Assets.Code.SpaceToadns
                 {
                     _timeText.text = string.Format("{0}\n{1}", "Survive", Mathf.Round(CurrentTime))
                         .PadLeft(4, '0');
+                }
+                else if (GameObject.FindGameObjectWithTag("SpaceToad").GetComponent<SpaceToadns.SpaceToad>()._endAnimation)
+                {
+                    _timeText.text = string.Format("{0}", "");
                 }
                 else
                 {

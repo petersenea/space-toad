@@ -12,13 +12,15 @@ namespace Assets.Code.SpaceToadns
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private bool _gameEnd;
+		public bool _endAnimation;
         public bool facingRight = true;
         private bool fired = false;
         private float timeToFire = 0f;
         private bool canEscape = false;
-        public float timeToEscape = 60.0f;
+        public float timeToEscape = 10.0f;
 		public Sprite safeShip;
 		public Sprite escapeShip;
+		GameObject spaceship;
        
 
         internal void Start()
@@ -26,7 +28,8 @@ namespace Assets.Code.SpaceToadns
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _gameEnd = false;
-           
+			_endAnimation = false;
+			spaceship = GameObject.Find("SpaceShip(Clone)");
         }
 
         internal void Update()
@@ -51,13 +54,15 @@ namespace Assets.Code.SpaceToadns
             if (timeToEscape <= 0 && !canEscape)
             {
                 canEscape = true;
-                GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().sprite = escapeShip;
+				Debug.Log("Can escape!");
+                //GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().sprite = escapeShip;
+				spaceship.GetComponent<SpriteRenderer>().sprite = escapeShip;
             }
         }
 
         private void CheckKeys()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation)
             {
                 if (!_jumping)
                 {
@@ -66,7 +71,7 @@ namespace Assets.Code.SpaceToadns
                 _jumping = true;
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd)
+            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation)
             {
                 if (!facingRight) 
                 {
@@ -80,7 +85,7 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd)
+            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation)
             {
                 if (facingRight) 
                 {
@@ -94,7 +99,7 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !fired)
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired)
             {
                 SpawnRocket();
                 fired = true;
@@ -104,6 +109,18 @@ namespace Assets.Code.SpaceToadns
             {
                 Game.Ctx.PauseGameElements();
             }
+
+			if (_endAnimation && !_gameEnd)
+			{
+				Vector3 pos = spaceship.transform.position;
+				//spaceship.transform.Translate(Vector3.up * Time.deltaTime * 2f);
+				spaceship.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime, pos.z);
+				//Debug.Log(spaceship.transform.position.y);
+				if (spaceship.transform.position.y >= 10f)
+				{
+					_gameEnd = true;
+				}
+			}
         }
 
         private void FlipToad() 
@@ -140,11 +157,13 @@ namespace Assets.Code.SpaceToadns
 
             else if (collision.gameObject.tag == "SpaceShip" && canEscape)
             {
-                Destroy(gameObject, 0.1f);
-                Game.Ctx.PauseGameElements();
+                //Destroy(gameObject, 0.1f);
+                //Game.Ctx.PauseGameElements();
 				collision.gameObject.GetComponent<SpriteRenderer>().sprite = safeShip;
                 //collision.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-                _gameEnd = true;
+                //_gameEnd = true;
+				EndingAnimation();
+				_endAnimation = true;
 
             }
             else if (collision.gameObject.tag == "AlienFrog")
@@ -184,10 +203,15 @@ namespace Assets.Code.SpaceToadns
             {
                 _jumping = false;
             }
-
-           
-
         }
+
+		private void EndingAnimation() 
+		{
+			transform.position = new Vector3(7.833f, 10f, 0);
+			_rb.isKinematic = true;
+			_endAnimation = true;
+		}
+
 
     }
 }
