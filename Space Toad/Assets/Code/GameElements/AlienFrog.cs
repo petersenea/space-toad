@@ -14,21 +14,22 @@ namespace Assets.Code.AlienFrog
         private GameObject toad;
         private Text _scoreText;
         private int _score;
-
+        private Rigidbody2D _rb;
 
         internal void Start()
         {
             _didWin = false;
             toad = GameObject.FindGameObjectWithTag("SpaceToad");
-            
+            _rb = GetComponent<Rigidbody2D>();
         }
 
         internal void Update()
         {
+            bool endAnim = toad.GetComponent<SpaceToadns.SpaceToad>()._endAnimation;
             if (!_didWin)
             {
                 Timer += Time.deltaTime;
-                if (Timer >= 6f)
+                if (Timer >= 6f && !endAnim)
                 {
                     SpawnLaser();
                     Timer = 0f;
@@ -52,7 +53,18 @@ namespace Assets.Code.AlienFrog
                 {
                     dir = 1f;
                 }
-                transform.Translate(Vector3.left * Time.deltaTime * dir * 2f);
+
+                if (!endAnim)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * dir * 2f);
+                }
+                else
+                {
+                    Vector3 force = new Vector3(dir*0.25f, 0.2f, 0f);
+                    _rb.isKinematic = false;
+                    _rb.AddForce(force, ForceMode2D.Impulse);
+                    _rb.transform.Rotate(0,0,1f);
+                }
             }
         }
         

@@ -54,7 +54,7 @@ namespace Assets.Code.SpaceToadns
             if (timeToEscape <= 0 && !canEscape)
             {
                 canEscape = true;
-				Debug.Log("Can escape!");
+				//Debug.Log("Can escape!");
                 //GameObject.Find("SpaceShip(Clone)").GetComponent<SpriteRenderer>().sprite = escapeShip;
 				spaceship.GetComponent<SpriteRenderer>().sprite = escapeShip;
             }
