@@ -70,7 +70,7 @@ namespace Assets.Code.Menus
 
         public void ShowInstructionsMenu()
         {
-            if (_start == null && _pause == null)
+            if (_start == null && _pause == null && _instructions == null)
             {
                 _instructions = new InstructionsMenu();
                 _instructions.Show();
