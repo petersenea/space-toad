@@ -15,6 +15,8 @@ namespace Assets.Code.AlienFrog
         private Text _scoreText;
         private int _score;
         private Rigidbody2D _rb;
+        public AudioClip laserSound;
+        public AudioClip frogExplosionSound;
 
         internal void Start()
         {
@@ -78,6 +80,8 @@ namespace Assets.Code.AlienFrog
 
         internal void SpawnLaser()
         {
+            GetComponent<AudioSource>().PlayOneShot(laserSound, 1F);
+
             var rocket = (GameObject) Instantiate(Resources.Load("GameElements/LaserBullet"));
             float dir = 1f;
             float width = GetComponent<SpriteRenderer>().size.x;
@@ -95,6 +99,7 @@ namespace Assets.Code.AlienFrog
 
         internal void OnTriggerEnter2D(Collider2D collision)
         {
+            
             if (collision.gameObject.tag == "SpaceToad")
             {
                 if (collision.gameObject.GetComponent<SpriteRenderer>().color == Color.yellow)
@@ -109,6 +114,10 @@ namespace Assets.Code.AlienFrog
             }
             else if (collision.gameObject.tag == "RocketBullet")
             {
+                AudioSource mySource = GetComponent<AudioSource>();
+                UnityEngine.Debug.Log(mySource);
+                mySource.PlayOneShot(frogExplosionSound, 1F);
+
                 _scoreText = GameObject.Find("Score").GetComponent<Text>();
                 _score = Convert.ToInt32(_scoreText.text);
                 _score = _score + 1;
@@ -119,6 +128,7 @@ namespace Assets.Code.AlienFrog
             }
 
         }
+
 
         internal void OnCollisionEnter2D(Collision2D collision)
         {

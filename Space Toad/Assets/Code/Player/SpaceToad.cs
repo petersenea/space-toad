@@ -20,6 +20,11 @@ namespace Assets.Code.SpaceToadns
         public float timeToEscape = 60.0f;
 		public Sprite safeShip;
 		public Sprite escapeShip;
+        public AudioClip rocketSound;
+        public AudioClip flyCollisionSound;
+        public AudioClip frogCollisionSound;
+        public AudioClip toadExplosionSound;
+        public AudioClip toadBoardingSound;
 		GameObject spaceship;
        
 
@@ -112,6 +117,8 @@ namespace Assets.Code.SpaceToadns
 
 			if (_endAnimation && !_gameEnd)
 			{
+                GetComponent<AudioSource>().PlayOneShot(toadBoardingSound, 1F);
+
 				Vector3 pos = spaceship.transform.position;
 				//spaceship.transform.Translate(Vector3.up * Time.deltaTime * 2f);
 				spaceship.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime, pos.z);
@@ -133,6 +140,7 @@ namespace Assets.Code.SpaceToadns
 
         internal void SpawnRocket()
         {
+            GetComponent<AudioSource>().PlayOneShot(rocketSound, 0.7F);
             var rocket = (GameObject)Instantiate(Resources.Load("GameElements/RocketBullet"));
             float dir = 1f;
             float width = GetComponent<SpriteRenderer>().size.x;
@@ -150,6 +158,7 @@ namespace Assets.Code.SpaceToadns
         { 
             if (collision.gameObject.tag == "MoonFly")
             {
+                GetComponent<AudioSource>().PlayOneShot(flyCollisionSound, 1f);
                 Destroy(collision.gameObject);
                 _sr.color = Color.yellow;
             }
@@ -168,6 +177,7 @@ namespace Assets.Code.SpaceToadns
             }
             else if (collision.gameObject.tag == "AlienFrog")
             {
+                GetComponent<AudioSource>().PlayOneShot(frogCollisionSound, 1f);
 
                 if (_sr.color == Color.yellow)
                 {
@@ -183,6 +193,8 @@ namespace Assets.Code.SpaceToadns
             }
             else if (collision.gameObject.tag == "LaserBullet")
             {
+                GetComponent<AudioSource>().PlayOneShot(toadExplosionSound);
+
                 if (_sr.color == Color.yellow)
                 {
                     _sr.color = Color.white;
