@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menus/.idea/.idea.Menus.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Menus/.idea/.idea.Menus.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menus/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Menus/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../Sprites.meta" afterDir="false" />
-    </list>
+    <list default="true" id="0ac4267c-c565-4f45-aef0-7e61aedbd684" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,16 +29,31 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Menus/PauseMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Menus/PauseMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/RocketBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Menus/UIManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Player/SpaceToad.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/LaserBullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CameraSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Player/SpaceToad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Game.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/MoonFly.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GameElements/AlienFrog.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../TimeManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Game.cs" />
         <option value="$PROJECT_DIR$/Menus/UIManager.cs" />
+        <option value="$PROJECT_DIR$/../CameraControl.cs" />
+        <option value="$PROJECT_DIR$/../CameraSystem.cs" />
+        <option value="$PROJECT_DIR$/GameElements/RocketBullet.cs" />
+        <option value="$PROJECT_DIR$/../MoonFly.cs" />
+        <option value="$PROJECT_DIR$/MoonFly.cs" />
+        <option value="$PROJECT_DIR$/GameElements/LaserBullet.cs" />
+        <option value="$PROJECT_DIR$/GameElements/AlienFrog.cs" />
+        <option value="$PROJECT_DIR$/Game.cs" />
+        <option value="$PROJECT_DIR$/Player/SpaceToad.cs" />
+        <option value="$PROJECT_DIR$/../TimeManager.cs" />
       </list>
     </option>
   </component>
@@ -49,15 +77,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606088225471</updated>
-      <workItem from="1606088237126" duration="753000" />
+      <workItem from="1606088237126" duration="972000" />
+      <workItem from="1606171831908" duration="13254000" />
+      <workItem from="1606342338962" duration="785000" />
+      <workItem from="1606428517862" duration="3053000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
