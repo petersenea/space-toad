@@ -70,47 +70,51 @@ namespace Assets.Code.SpaceToadns
 
         private void CheckKeys()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
+            if (Time.timeScale != 0)
             {
-                if (!_jumping)
+                if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation)
                 {
-                    _rb.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
-                }
-                _jumping = true;
-            }
+                    if (!_jumping)
+                    {
+                        _rb.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+                    }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
-            {
-                if (!facingRight) 
-                {
-                    FlipToad();
+                    _jumping = true;
                 }
 
-                if (transform.position.x <= 27f)
+                if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation)
                 {
-                    _rb.position += new Vector2(1f, 0f) * 0.1f;
-                    //transform.position += Vector3.right * 0.1f;
-                }
-            }
+                    if (!facingRight)
+                    {
+                        FlipToad();
+                    }
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
-            {
-                if (facingRight && Time.timeScale != 0) 
-                {
-                    FlipToad();
+                    if (transform.position.x <= 27f)
+                    {
+                        _rb.position += new Vector2(1f, 0f) * 0.1f;
+                        //transform.position += Vector3.right * 0.1f;
+                    }
                 }
-                
-                if (transform.position.x >= -10f) 
-                {
-                    _rb.position += new Vector2 (1f, 0f) * -0.1f;
-				    //transform.position += Vector3.right * -0.1f;
-                }
-            }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired && Time.timeScale != 0)
-            {
-                SpawnRocket();
-                fired = true;
+                if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation)
+                {
+                    if (facingRight && Time.timeScale != 0)
+                    {
+                        FlipToad();
+                    }
+
+                    if (transform.position.x >= -10f)
+                    {
+                        _rb.position += new Vector2(1f, 0f) * -0.1f;
+                        //transform.position += Vector3.right * -0.1f;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired)
+                {
+                    SpawnRocket();
+                    fired = true;
+                }
             }
 
             if (_gameEnd)
