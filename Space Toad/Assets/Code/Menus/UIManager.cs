@@ -13,6 +13,7 @@ namespace Assets.Code.Menus
         private InstructionsMenu _instructions;
         private readonly Text _keyText;
         private Text _hitText;
+        private RectTransform _refRect;
 
         public bool InMainMenu { get { return _start != null && _start.Showing; } }
 
@@ -20,12 +21,14 @@ namespace Assets.Code.Menus
             Canvas = GameObject.Find("Canvas").transform; // There should only ever be one canvas
             _keyText = GameObject.Find("ReferenceKey").GetComponent<Text>();
             _hitText = GameObject.Find("Hit").GetComponent<Text>();
+            _refRect = GameObject.Find("ReferenceKey").GetComponent<RectTransform>();
         }
 
         private void ShowReferenceKey()
         {
             _keyText.text = "'i': Instructions\n'p': Pause Game\n'Esc': Restart Game";
             _hitText.text = "Hits:";
+            _refRect.position = new Vector3(Screen.width - 200f, _refRect.position.y, _refRect.position.z);
         }
 
         private void HideReferenceKey()
