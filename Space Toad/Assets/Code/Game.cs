@@ -164,6 +164,7 @@ namespace Assets.Code
             Time.timeScale = 0;
             //Debug.Log("pausing game elements...");
             _started = false;
+            //GameObject.Find("SpaceToad(Clone)").isPaused = true;
         }
 
         public void UnpauseGameElements()
@@ -172,6 +173,7 @@ namespace Assets.Code
             Time.timeScale = 1;
             //Debug.Log("unpausing game elements...");
             _started = true;
+            //GameObject.Find("SpaceToad(Clone)").isPaused = false;
         }
 
         

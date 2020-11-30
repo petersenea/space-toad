@@ -109,14 +109,18 @@ namespace Assets.Code.AlienFrog
                 else
                 {
                     _didWin = true;
+                    GetComponent<SpriteRenderer>().color = Color.green;
                 }
 
             }
             else if (collision.gameObject.tag == "RocketBullet")
+            //else
             {
-                AudioSource mySource = GetComponent<AudioSource>();
-                UnityEngine.Debug.Log(mySource);
-                mySource.PlayOneShot(frogExplosionSound, 1F);
+                //AudioSource mySource = GetComponent<AudioSource>();
+                //UnityEngine.Debug.Log(mySource);
+                //mySource.PlayOneShot(frogExplosionSound, 1F);
+
+                //GetComponent<AudioSource>().PlayOneShot(frogExplosionSound, 1F);
 
                 _scoreText = GameObject.Find("Score").GetComponent<Text>();
                 _score = Convert.ToInt32(_scoreText.text);

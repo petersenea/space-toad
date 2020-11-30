@@ -18,7 +18,8 @@ namespace Assets.Code.SpaceToadns
         private float timeToFire = 0f;
         private bool canEscape = false;
         public float timeToEscape = 60.0f;
-		public Sprite safeShip;
+        //public bool isPaused;
+        public Sprite safeShip;
 		public Sprite escapeShip;
         public AudioClip rocketSound;
         public AudioClip flyCollisionSound;
@@ -26,6 +27,7 @@ namespace Assets.Code.SpaceToadns
         public AudioClip toadExplosionSound;
         public AudioClip toadBoardingSound;
 		GameObject spaceship;
+        
        
 
         internal void Start()
@@ -35,6 +37,7 @@ namespace Assets.Code.SpaceToadns
             _gameEnd = false;
 			_endAnimation = false;
 			spaceship = GameObject.Find("SpaceShip(Clone)");
+            //isPaused = false;
         }
 
         internal void Update()
@@ -173,6 +176,7 @@ namespace Assets.Code.SpaceToadns
                 //_gameEnd = true;
 				EndingAnimation();
 				_endAnimation = true;
+                GetComponent<SpriteRenderer>().enabled = false;
 
             }
             else if (collision.gameObject.tag == "AlienFrog")

@@ -77,13 +77,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '- Use the right arrow key to move Space Toad towards his ship.
+  m_Text: '- Use the right and left arrow keys to move Space Toad.
 
-    -
-    Use the up arrow key to make Space Toad jump.
+    - Use the
+    up arrow key to make Space Toad jump.
 
-    - Use the space bar to make
-    Space Toad fire his rocket launcher.
+    - Use the space bar to make Space
+    Toad fire his rocket launcher.
 
     - Use the Esc key to restart the game.'
 --- !u!1 &7846445490496919079
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7735849, g: 0.054734774, b: 0.054734774, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 24
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  m_Color: {r: 0.14901961, g: 0.14509805, b: 0.14509805, a: 0.80784315}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -311,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 1.1, y: -53}
+  m_SizeDelta: {x: 219.47473, y: 44.358765}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8724129706691966832
 CanvasRenderer:
