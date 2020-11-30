@@ -70,7 +70,7 @@ namespace Assets.Code.SpaceToadns
 
         private void CheckKeys()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
             {
                 if (!_jumping)
                 {
@@ -79,7 +79,7 @@ namespace Assets.Code.SpaceToadns
                 _jumping = true;
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation)
+            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
             {
                 if (!facingRight) 
                 {
@@ -93,9 +93,9 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation)
+            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation && Time.timeScale != 0)
             {
-                if (facingRight) 
+                if (facingRight && Time.timeScale != 0) 
                 {
                     FlipToad();
                 }
@@ -107,7 +107,7 @@ namespace Assets.Code.SpaceToadns
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired)
+            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired && Time.timeScale != 0)
             {
                 SpawnRocket();
                 fired = true;
