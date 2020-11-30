@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Assets.Code.SpaceToadns
 {
@@ -27,8 +28,11 @@ namespace Assets.Code.SpaceToadns
         public AudioClip toadExplosionSound;
         public AudioClip toadBoardingSound;
 		GameObject spaceship;
-        
-       
+        private string message;
+        private bool displayMessage;
+        private GUIStyle guiStyle = new GUIStyle();
+
+
 
         internal void Start()
         {
@@ -38,6 +42,7 @@ namespace Assets.Code.SpaceToadns
 			_endAnimation = false;
 			spaceship = GameObject.Find("SpaceShip(Clone)");
             //isPaused = false;
+            displayMessage = false;
         }
 
         internal void Update()
@@ -129,11 +134,14 @@ namespace Assets.Code.SpaceToadns
 				Vector3 pos = spaceship.transform.position;
 				//spaceship.transform.Translate(Vector3.up * Time.deltaTime * 2f);
 				spaceship.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime, pos.z);
-				//Debug.Log(spaceship.transform.position.y);
-				if (spaceship.transform.position.y >= 10f)
+                //Debug.Log(spaceship.transform.position.y);
+                message = "You win!";
+                displayMessage = true;
+                if (spaceship.transform.position.y >= 10f)
 				{
 					_gameEnd = true;
-				}
+                    
+                }
 			}
         }
 
@@ -196,6 +204,8 @@ namespace Assets.Code.SpaceToadns
                 {
                     _sr.color = Color.red;
                     _gameEnd = true;
+                    message = "You lose!";
+                    displayMessage = true;
 
                 }
             }
@@ -212,6 +222,8 @@ namespace Assets.Code.SpaceToadns
                 {
                     _sr.color = Color.red;
                     _gameEnd = true;
+                    message = "You lose!";
+                    displayMessage = true;
                 }
                 Destroy(collision.gameObject);
             }
@@ -232,6 +244,15 @@ namespace Assets.Code.SpaceToadns
 			_endAnimation = true;
 		}
 
+        void OnGUI()
+        {
+            guiStyle.fontSize = 25; //change the font size
+            guiStyle.normal.textColor = Color.white;
+            if (displayMessage)
+            {
+                GUI.Label(new Rect((Screen.width / 2) - 100f, Screen.height / 2, 200f, 200f), message + "\n(Press Esc to Restart)", guiStyle);
+            }
+        }
 
     }
 }
