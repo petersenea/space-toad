@@ -24,6 +24,7 @@ namespace Assets.Code
 
         private SpaceToadns.SpaceToad _player;
         private bool _started;
+        private bool _paused;
         private float Timer = 0f;
         private float FlyTimer = 0f;
 
@@ -35,6 +36,7 @@ namespace Assets.Code
             UI.ShowStartMenu();
             UnpauseGameElements();
             _started = false;
+            _paused = false;
         }
 
         public bool CheckStart()
@@ -50,7 +52,7 @@ namespace Assets.Code
         private void Update()
         {
 
-            if (Input.GetKeyDown(KeyCode.S) && !_started)
+            if (Input.GetKeyDown(KeyCode.S) && !_started && !_paused)
             {
                 StartGame();
                 
@@ -118,7 +120,7 @@ namespace Assets.Code
             SpawnGameElements();
             GameObject.Find("Score").GetComponent<Text>().text = "0";
             UI.GameStart();
-
+            _started = true;
         }
 
 
@@ -133,7 +135,7 @@ namespace Assets.Code
             SpawnAlien(); // one Alien to start
             SpawnFly(); // one Fly to start
 
-            _started = true;
+            
 
         }
 
@@ -164,6 +166,7 @@ namespace Assets.Code
             Time.timeScale = 0;
             //Debug.Log("pausing game elements...");
             _started = false;
+            _paused = true;
             //GameObject.Find("SpaceToad(Clone)").isPaused = true;
         }
 
@@ -173,6 +176,7 @@ namespace Assets.Code
             Time.timeScale = 1;
             //Debug.Log("unpausing game elements...");
             _started = true;
+            _paused = false;
             //GameObject.Find("SpaceToad(Clone)").isPaused = false;
         }
 
