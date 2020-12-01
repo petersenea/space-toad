@@ -22,3 +22,4 @@ Menus:
 Hints:
 Alien Frogs are armed with laser guns, so be careful to avoid their laser beams!
 Moon Flies, when consumed, provide temporary immunity from Alien Frog attacks.
+When the countdown timer reaches zero, make your way back to the ship.

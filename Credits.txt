@@ -3,3 +3,5 @@ Base frog: https://freepngimg.com/png/9185-frog-png-3
 
 Base fly: http://www.pngplay.com/image/7303
 - Free for personal use, no license
+
+All sounds are from Exercise 1: Game Sound Solutions - 8 bits Elements
