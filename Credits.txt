@@ -1,3 +1,5 @@
-frog: https://freepngimg.com/png/9185-frog-png-3
+Base frog: https://freepngimg.com/png/9185-frog-png-3 
+- Free for personal use, no license
 
-fly: http://www.pngplay.com/image/7303
+Base fly: http://www.pngplay.com/image/7303
+- Free for personal use, no license
