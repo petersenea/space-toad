@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Assets.Code.SpaceToadns
 {
@@ -27,8 +28,11 @@ namespace Assets.Code.SpaceToadns
         public AudioClip toadExplosionSound;
         public AudioClip toadBoardingSound;
 		GameObject spaceship;
-        
-       
+        private string message;
+        private bool displayMessage;
+        private GUIStyle guiStyle = new GUIStyle();
+
+
 
         internal void Start()
         {
@@ -38,6 +42,7 @@ namespace Assets.Code.SpaceToadns
 			_endAnimation = false;
 			spaceship = GameObject.Find("SpaceShip(Clone)");
             //isPaused = false;
+            displayMessage = false;
         }
 
         internal void Update()
@@ -70,47 +75,51 @@ namespace Assets.Code.SpaceToadns
 
         private void CheckKeys()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation)
+            if (Time.timeScale != 0)
             {
-                if (!_jumping)
+                if (Input.GetKeyDown(KeyCode.UpArrow) && !_gameEnd && !_endAnimation)
                 {
-                    _rb.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
-                }
-                _jumping = true;
-            }
+                    if (!_jumping)
+                    {
+                        _rb.AddForce(transform.up * _jumpForce, ForceMode2D.Impulse);
+                    }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation)
-            {
-                if (!facingRight) 
-                {
-                    FlipToad();
+                    _jumping = true;
                 }
 
-                if (transform.position.x <= 27f)
+                if (Input.GetKey(KeyCode.RightArrow) && !_gameEnd && !_endAnimation)
                 {
-                    _rb.position += new Vector2(1f, 0f) * 0.1f;
-                    //transform.position += Vector3.right * 0.1f;
-                }
-            }
+                    if (!facingRight)
+                    {
+                        FlipToad();
+                    }
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation)
-            {
-                if (facingRight) 
-                {
-                    FlipToad();
+                    if (transform.position.x <= 27f)
+                    {
+                        _rb.position += new Vector2(1f, 0f) * 0.1f;
+                        //transform.position += Vector3.right * 0.1f;
+                    }
                 }
-                
-                if (transform.position.x >= -10f) 
-                {
-                    _rb.position += new Vector2 (1f, 0f) * -0.1f;
-				    //transform.position += Vector3.right * -0.1f;
-                }
-            }
 
-            if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired)
-            {
-                SpawnRocket();
-                fired = true;
+                if (Input.GetKey(KeyCode.LeftArrow) && !_gameEnd && !_endAnimation)
+                {
+                    if (facingRight && Time.timeScale != 0)
+                    {
+                        FlipToad();
+                    }
+
+                    if (transform.position.x >= -10f)
+                    {
+                        _rb.position += new Vector2(1f, 0f) * -0.1f;
+                        //transform.position += Vector3.right * -0.1f;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) && !_gameEnd && !_endAnimation && !fired)
+                {
+                    SpawnRocket();
+                    fired = true;
+                }
             }
 
             if (_gameEnd)
@@ -125,11 +134,14 @@ namespace Assets.Code.SpaceToadns
 				Vector3 pos = spaceship.transform.position;
 				//spaceship.transform.Translate(Vector3.up * Time.deltaTime * 2f);
 				spaceship.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime, pos.z);
-				//Debug.Log(spaceship.transform.position.y);
-				if (spaceship.transform.position.y >= 10f)
+                //Debug.Log(spaceship.transform.position.y);
+                message = "You win!";
+                displayMessage = true;
+                if (spaceship.transform.position.y >= 10f)
 				{
 					_gameEnd = true;
-				}
+                    
+                }
 			}
         }
 
@@ -192,6 +204,8 @@ namespace Assets.Code.SpaceToadns
                 {
                     _sr.color = Color.red;
                     _gameEnd = true;
+                    message = "You lose!";
+                    displayMessage = true;
 
                 }
             }
@@ -208,6 +222,8 @@ namespace Assets.Code.SpaceToadns
                 {
                     _sr.color = Color.red;
                     _gameEnd = true;
+                    message = "You lose!";
+                    displayMessage = true;
                 }
                 Destroy(collision.gameObject);
             }
@@ -228,6 +244,15 @@ namespace Assets.Code.SpaceToadns
 			_endAnimation = true;
 		}
 
+        void OnGUI()
+        {
+            guiStyle.fontSize = 25; //change the font size
+            guiStyle.normal.textColor = Color.white;
+            if (displayMessage)
+            {
+                GUI.Label(new Rect((Screen.width / 2) - 100f, Screen.height / 2, 200f, 200f), message + "\n(Press Esc to Restart)", guiStyle);
+            }
+        }
 
     }
 }
